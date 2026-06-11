@@ -13,6 +13,9 @@
     .no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
     ::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-track{background:#0f172a}::-webkit-scrollbar-thumb{background:#334155;border-radius:3px}
     html{scroll-behavior:smooth}
+    /* Compensa a altura do header sticky para que as âncoras (#calendario, #strategic) parem com folga */
+    #calendario,#strategic{scroll-margin-top:96px}
+    @media (min-width:640px){#calendario,#strategic{scroll-margin-top:104px}}
   </style>
 </head>
 <body class="bg-[#0f172a] text-slate-100 min-h-screen relative overflow-x-hidden antialiased select-none">
@@ -385,6 +388,13 @@
       Roediger &amp; Butler 2011 · Karpicke &amp; Roediger 2008 · Sweller 1988 · Ebbinghaus 1885 · CNCF Annual Survey 2024 · Brasscom 2025 · IDC Brasil 2026 ·
       Glassdoor BR (881 sal Java; 8 sal remoto US$ 78.314–98.618/ano) · Indeed BR (210 + 72 sal · pleno R$ 6.387) · Jobted BR 2026 · huntit.com.br fev/2026 (700k vagas; SP CLT até R$ 22k) ·
       thinkcloudly.com abr/2026 (premium K8s+Cloud 20–40%; remoto intl 40–80%) · knowledgehut.com · sailor.sh.
+    </div>
+
+    <!-- Botão Voltar ao Topo -->
+    <div class="mt-4 text-center">
+      <a href="#calendario" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#0f172a] border border-cyan-500/30 hover:border-cyan-500 text-cyan-400 text-[11px] mono font-bold tracking-wide transition-colors">
+        ↑ Voltar ao Calendário
+      </a>
     </div>
   </div>
 </section>
