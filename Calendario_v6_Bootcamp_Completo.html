@@ -1,0 +1,91 @@
+<!--
+  Calendário v6 — Bootcamp 7 Semanas · Rocketseat Premium Aula a Aula
+  Recebido íntegro em junho/2026 (todas as 7 semanas com detalhe diário).
+
+  RESUMO ESTRUTURAL (extraído do HTML para fins de comparação):
+
+  CABEÇALHO / CONFIGURAÇÃO MACRO:
+  - Título: "Bootcamp v6 · Rocketseat Premium Aula a Aula"
+  - Subtítulo: "7 Semanas · Academia 06h Seg/Qua/Sex · AWS SAP-C02 · K8s N1+N2 · CI/CD"
+  - Proporção declarada: 80% Tech / 20% Finanças
+
+  ACADEMIA (regra fixa de manutenção biológica):
+  - Seg/Qua/Sex 06:00–07:30 (treino + banho) → estudos às 07:30
+  - Ter/Qui sem academia: setup às 06:00, estudos às 07:00 (+30min)
+  - Sábado: válvula de reposição de treino se faltou Seg/Qua/Sex
+  - Mínimo 3 treinos/semana, inegociável
+
+  RAMPA AWS SAP-C02 (questões/dia):
+  - S1/S2: 5 q/dia
+  - S3/S4: 10 q/dia
+  - S5: 15 q/dia
+  - S6: 25 q/dia + Simulado 1/4 no sábado
+  - S7: 35 q/dia + Simulados 2, 3 e 4 (Ter, Qui, Sex)
+  - Score ≥ 75% em 2 simulados consecutivos → agendar prova
+
+  BLOCOS DIÁRIOS (dias úteis):
+  - 06:00–07:30 Academia (Seg/Qua/Sex) ou 06:00–07:00 Setup (Ter/Qui)
+  - 07:30–09:30 (ou 07:00–09:30 nos dias sem academia) — Bloco A: tópico novo principal
+  - 09:30–11:00 — Bloco B: tópico complementar
+  - 11:00–13:00 — Almoço travado (regulamentar, sem telas)
+  - 14:00–16:00 — Bloco C: prática/projetos
+  - 16:00–18:00 — AWS SAP-C02: questões (retrieval practice)
+  - 18:00–21:30 — Lazer / Shutdown
+  - 21:30 — Dormir (8h30 de sono p/ consolidação de memória)
+
+  TRILHA ROCKETSEAT (semana a semana, projetos âncora):
+  - S1: Java Rocketseat aula a aula — Design Patterns (9 aulas) + DDD (4) +
+        Testes da aplicação (14) + Qualidade de Código (6) + Git Avançado.
+        Projeto âncora: Petland API com SOLID.
+  - S2: Microsserviços com Spring Cloud (curso 1) — Módulos 1-3 (Conceitos +
+        Spring Cloud + Configuração Centralizada). DSA: DoublyLinkedList O(1).
+        Docker Multi-stage + Compose com volumes/healthchecks.
+  - S3: Spring Cloud Módulo 4 (Service Discovery / Eureka) + K8s N1 — módulo
+        Conhecendo o Kubernetes (9 aulas) + módulo Orquestrando Containers
+        (aulas 1-8). DSA: BST manual.
+  - S4: Spring Cloud completo — Módulo 5 (Comunicação) + Módulo 6
+        (Containerização) + Quiz avaliativo. K8s N1 — módulo Explorando
+        Deployment (12 aulas) com ConfigMap+Secret. DSA: HashMap manual + LRU
+        Cache Engine (DLL+HashMap).
+  - S5: Curso 2 da Rocketseat — Microsserviços Escaláveis (5 aulas, 6h11min).
+        K8s N1 — módulo Conhecendo o HPA (13 aulas) + módulo Probes e Self
+        Healing (9 aulas). LRU Cache testes de estresse 10k operações.
+  - S6: K8s N2 — módulo Operação com Kubernetes (filtrado: RBAC, Namespaces,
+        Network Policies) + módulo Topologias e Pipelines (filtrado:
+        StatefulSets, CI/CD com GitHub Actions). Helm chart básico do
+        Nebula-Archive. RabbitMQ (AMQP, DLQ). Java 21 Virtual Threads.
+        SIMULADO 1/4 SAP-C02 no sábado.
+  - S7: Saga Pattern (Orquestrado) + CQRS no Nebula-Archive. Active Recall
+        TOTAL da trilha DSA (DoublyLinkedList, HashMap, BST, LRU). Maratona
+        de simulados: 35 q/dia + Simulados 2 (Ter), 3 (Qui), 4 (Sex). IPS
+        (Investment Policy Statement) lacrado no domingo final.
+  - Aviso explícito do calendário: "K8s N3-N7 + ArgoCD + GitOps → Fase 2"
+
+  TRILHA DE FINANÇAS (livros + tema da semana):
+  - S1: Graham — O Investidor Inteligente, Cap. 1-2. Tema: SAC vs PRICE.
+  - S2: Graham — Cap. 3 (Histórico do mercado). Tema: Renda Fixa
+        (Selic/CDI/IPCA, CDB vs LCI vs Tesouro IPCA+, Mark-to-Market).
+  - S3: Graham — Cap. 3 (continuação). Tema: Renda Variável — Múltiplos
+        (P/L, P/VP, ROE, DL/EBITDA).
+  - S4: Pai Rico Pai Pobre (Kiyosaki) — Cap. 1-2. Tema: Método Barsi —
+        Preço Teto (DY médio anual / 0.06), setor BESST.
+  - S5: Pai Rico Pai Pobre — Cap. 3-4. Tema: Ordens OCO (gestão de risco,
+        Stop -1% / Gain +3%, ratio 3:1, máx 1% capital por operação).
+  - S6: Mastering Bitcoin (Antonopoulos) — Cap. 1-3. Tema: Revisão B&H em
+        dias úteis + OPSEC (Monero, BIP39, Hardware Wallets) em sessão única
+        de sábado.
+  - S7: Faça Venda na Bolsa (Barsi). Tema: IPS — Investment Policy Statement
+        com 50% RF / 40% BESST / 10% Cripto, impresso e assinado no domingo.
+
+  PRÁTICAS PEDAGÓGICAS DECLARADAS (consistentes em todas as semanas):
+  - Active Recall todas as sextas-feiras (Bloco A) — reproduzir conteúdo
+    técnico do zero no caderno, sem consultar.
+  - Técnica Feynman aos domingos — explicar conceitos em voz alta.
+  - Spaced Repetition — rampa progressiva de questões SAP-C02.
+  - Push obrigatório no GitHub aos sábados (Deep Work).
+  - Auditoria de erros AWS aos domingos + planejamento da semana seguinte.
+
+  Documento técnico de referência preservado no repositório DevZunxBR/DOCX.
+  HTML interativo completo (com modais e estilos) está acessível ao usuário
+  na sua máquina; este arquivo guarda o resumo estruturado para auditoria.
+-->
