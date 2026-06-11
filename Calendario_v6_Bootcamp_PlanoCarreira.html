@@ -277,19 +277,60 @@
       </div>
       <p class="text-[11px] text-slate-400 leading-relaxed mb-4">Para um estudante de 5º semestre sem experiência corporativa formal, este portfólio está em um percentil estimado de ~92% de qualidade. O que falta na maioria: diagramas de arquitetura AWS-style, análise Big O explícita e READMEs em inglês.</p>
 
-      <!-- Grid de 6 projetos do portfólio existente -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mb-4">
-
-        <!-- SafeWallet Core -->
-        <div class="bg-[#1e293b] border-l-4 border-cyan-500 rounded-r-lg p-3">
-          <div class="flex justify-between items-start gap-2 mb-1">
-            <h4 class="text-sm font-bold text-cyan-300">🔐 SafeWallet Core</h4>
-            <span class="text-[11px] font-bold mono px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 whitespace-nowrap">8.5/10</span>
+      <!-- DESTAQUE PRINCIPAL: SafeWallet Core (projeto âncora) -->
+      <div class="bg-gradient-to-br from-cyan-500/10 via-[#1e293b] to-[#1e293b] border-2 border-cyan-500/40 rounded-xl p-4 mb-4 shadow-lg shadow-cyan-500/5">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">🔐</span>
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 class="text-base sm:text-lg font-bold text-cyan-300">SafeWallet Core</h3>
+                <span class="text-[10px] mono px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">⭐ PROJETO ÂNCORA</span>
+              </div>
+              <p class="text-[10px] mono text-slate-400 mt-0.5">Ecossistema completo: backend Java + frontend React + segurança bancária</p>
+            </div>
           </div>
-          <div class="text-[10px] mono text-slate-400 mb-2">Java 21 · Spring Boot · Security · JWT · PostgreSQL</div>
-          <p class="text-[11px] text-slate-300 leading-relaxed mb-2">Segurança perimetral real; microsserviço financeiro com ACID. Prova direto domínio de segurança bancária.</p>
-          <div class="text-[10px] text-amber-400 mono">⚠ Falta: testes JUnit documentados no README</div>
+          <span class="text-sm font-bold mono px-3 py-1 rounded bg-cyan-500/20 text-cyan-300 whitespace-nowrap">8.5/10</span>
         </div>
+        <p class="text-[12px] text-slate-200 leading-relaxed mb-3">
+          <span class="text-cyan-400 font-bold">Carteira digital completa</span> — microsserviço de backend de alta criticidade + interface web moderna.
+          Implementa fluxo completo de gerenciamento de usuários, carteiras e transações financeiras com
+          <span class="text-emerald-400 font-bold">esteira de segurança perimetral absoluta</span>: Spring Security + Hashing BCrypt + tokens Stateless JWT (HMAC256).
+        </p>
+
+        <!-- Stack em grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-[10px]">
+          <div class="bg-[#0f172a] p-2 rounded"><div class="mono text-cyan-400 font-bold mb-0.5">Backend</div><div class="text-slate-300">Java 21 · Spring Boot 4.0.6 · JPA/Hibernate</div></div>
+          <div class="bg-[#0f172a] p-2 rounded"><div class="mono text-emerald-400 font-bold mb-0.5">Segurança</div><div class="text-slate-300">Spring Security · Auth0 JWT · BCrypt</div></div>
+          <div class="bg-[#0f172a] p-2 rounded"><div class="mono text-purple-400 font-bold mb-0.5">Frontend</div><div class="text-slate-300">React 19 · Next.js · Tailwind · Axios + Zustand</div></div>
+          <div class="bg-[#0f172a] p-2 rounded"><div class="mono text-amber-400 font-bold mb-0.5">Infra</div><div class="text-slate-300">PostgreSQL 15 · Docker Compose</div></div>
+        </div>
+
+        <!-- Diferenciais técnicos -->
+        <div class="text-[10px] mono text-slate-400 font-bold tracking-wider uppercase mb-2">⚙️ Diferenciais técnicos comprovados no README</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-[11px] mb-3">
+          <div class="bg-[#0f172a]/60 p-2 rounded border-l-2 border-cyan-500"><span class="font-bold text-cyan-300">Eclusa Stateless (JWT)</span><div class="text-[10px] text-slate-400 mt-0.5">Login emite token assinado HMAC256. API valida sem tocar o banco — escalabilidade horizontal instantânea.</div></div>
+          <div class="bg-[#0f172a]/60 p-2 rounded border-l-2 border-emerald-500"><span class="font-bold text-emerald-300">SecurityFilter customizado</span><div class="text-[10px] text-slate-400 mt-0.5">OncePerRequestFilter intercepta 100% das rotas protegidas, valida assinatura e popula SecurityContextHolder.</div></div>
+          <div class="bg-[#0f172a]/60 p-2 rounded border-l-2 border-purple-500"><span class="font-bold text-purple-300">BCrypt + Tratamento Global</span><div class="text-[10px] text-slate-400 mt-0.5">Senhas nunca em texto plano. GlobalExceptionHandler blinda metadados, evita Information Disclosure.</div></div>
+          <div class="bg-[#0f172a]/60 p-2 rounded border-l-2 border-amber-500"><span class="font-bold text-amber-300">Transações ACID + isolamento BOLA</span><div class="text-[10px] text-slate-400 mt-0.5">Depósito/saque/transferência atômicos com rollback. Wallet ID isolado por usuário — zero IDOR.</div></div>
+          <div class="bg-[#0f172a]/60 p-2 rounded border-l-2 border-rose-500"><span class="font-bold text-rose-300">Frontend reativo seguro</span><div class="text-[10px] text-slate-400 mt-0.5">React/Next.js intercepta 401 do backend e protege rotas no client. Demonstração visual completa: 12 telas no README.</div></div>
+          <div class="bg-[#0f172a]/60 p-2 rounded border-l-2 border-cyan-500"><span class="font-bold text-cyan-300">OpenAPI / Swagger desacoplado</span><div class="text-[10px] text-slate-400 mt-0.5">Metadados isolados em br.com.safewallet.doc.controllers (Clean Architecture). JSON portátil para Postman/Insomnia.</div></div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-2 text-[10px]">
+          <div class="flex-1 bg-emerald-500/10 border border-emerald-500/30 rounded p-2">
+            <span class="text-emerald-400 font-bold mono">✅ Já tem:</span>
+            <span class="text-slate-300">documentação visual com 12 telas · Swagger UI interativo · Docker Compose · README completo em PT</span>
+          </div>
+          <div class="flex-1 bg-amber-500/10 border border-amber-500/30 rounded p-2">
+            <span class="text-amber-400 font-bold mono">⚠ Em modelagem:</span>
+            <span class="text-slate-300">Hospedagem AWS Cloud-Native (Terraform + ECS Fargate + RDS + CloudFront)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid de 5 projetos restantes do portfólio existente -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mb-4">
 
         <!-- Resilient Audit Batch -->
         <div class="bg-[#1e293b] border-l-4 border-emerald-500 rounded-r-lg p-3">
@@ -309,8 +350,8 @@
             <span class="text-[11px] font-bold mono px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 whitespace-nowrap">8.0/10</span>
           </div>
           <div class="text-[10px] mono text-slate-400 mb-2">NestJS · S3 · CloudFront · Lambda · Step Functions</div>
-          <p class="text-[11px] text-slate-300 leading-relaxed mb-2">Arquitetura cloud-native serverless; CDN com -50% latência. Padrões event-driven na AWS.</p>
-          <div class="text-[10px] text-amber-400 mono">⚠ Falta: diagrama de arquitetura AWS-style</div>
+          <p class="text-[11px] text-slate-300 leading-relaxed mb-2">Arquitetura cloud-native serverless; CDN com -50% latência. Padrões event-driven na AWS. <a href="https://github.com/GabrielF0900/Nebula-Archive" target="_blank" class="text-purple-400 hover:underline">↗ Ver no GitHub</a></p>
+          <div class="text-[10px] text-emerald-400 mono">✅ Diagrama de arquitetura no README</div>
         </div>
 
         <!-- AWS-Nexus IaC -->
@@ -331,8 +372,8 @@
             <span class="text-[11px] font-bold mono px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 whitespace-nowrap">9.0/10</span>
           </div>
           <div class="text-[10px] mono text-slate-400 mb-2">Kinesis · Rekognition · GuardDuty · Lambda · WAF</div>
-          <p class="text-[11px] text-slate-300 leading-relaxed mb-2">Escala enterprise: <span class="text-rose-400 font-bold">200M frames/mês</span>; 50M invocações/mês. Stack de segurança AWS completa.</p>
-          <div class="text-[10px] text-amber-400 mono">⚠ Falta: estimativa de custo documentada</div>
+          <p class="text-[11px] text-slate-300 leading-relaxed mb-2">Escala enterprise: <span class="text-rose-400 font-bold">200M frames/mês</span>; 50M invocações/mês. Stack de segurança AWS completa. <a href="https://github.com/GabrielF0900/CityShield-TCC-Escola-da-Nuvem-" target="_blank" class="text-rose-400 hover:underline">↗ Ver no GitHub</a></p>
+          <div class="text-[10px] text-emerald-400 mono">✅ Estimativa de custos no README</div>
         </div>
 
         <!-- NovaEdge CDN -->
@@ -350,37 +391,95 @@
 
       <!-- Subseção: Projetos do Bootcamp (vão somar ao portfólio nas 7 semanas) -->
       <div class="border-t border-slate-700/50 pt-4">
-        <div class="text-[10px] mono text-slate-400 font-bold tracking-wider uppercase mb-3">🛠️ Projetos a Construir no Bootcamp (Jul–Set 2026)</div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mb-3">
+          <div class="text-[10px] mono text-slate-400 font-bold tracking-wider uppercase">🛠️ Projetos do Bootcamp — O que vai ser construído (Jul–Set 2026)</div>
+          <span class="text-[10px] mono px-2 py-1 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">3 projetos · 7 semanas · evolução granular</span>
+        </div>
 
-          <!-- Petland API -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-3">
+
+          <!-- Petland API (S1) -->
           <div class="bg-[#1e293b] border border-[#f89820]/40 rounded-lg p-3">
-            <div class="flex items-center gap-2 mb-1">
-              <span class="text-[9px] font-bold text-[#f89820] mono px-1.5 py-0.5 rounded bg-[#f89820]/10">S1</span>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-[9px] font-bold text-[#f89820] mono px-1.5 py-0.5 rounded bg-[#f89820]/10">S1 · 7 dias</span>
               <h4 class="text-sm font-bold text-[#f89820]">🐾 Petland API</h4>
             </div>
-            <div class="text-[10px] mono text-slate-400 mb-2">Java 21 · Records · DDD · GoF · Spring Boot · JaCoCo ≥80%</div>
-            <p class="text-[11px] text-slate-300 leading-relaxed">Projeto-base da S1: Design Patterns + DDD + Testes + Qualidade aplicados. Saída: API completa com SonarQube + Quality Gate verde.</p>
+            <div class="text-[10px] mono text-slate-400 mb-2">Java 21 · Spring Boot · DDD · GoF · JaCoCo · SonarQube</div>
+            <p class="text-[11px] text-slate-300 leading-relaxed mb-3">Projeto-base para fixar Design Patterns + DDD + Testes + Qualidade aplicados aula a aula no curso Java Rocketseat.</p>
+
+            <div class="text-[10px] mono text-[#f89820] font-bold mb-2">📋 O que vai ser feito:</div>
+            <ul class="space-y-1.5 text-[10px] text-slate-300">
+              <li class="flex gap-1.5"><span class="text-[#f89820] shrink-0">▸</span><span><b>Java 17+ moderno:</b> entidades como Records + Pattern Matching + Sealed Classes + Switch Expressions + Text Blocks</span></li>
+              <li class="flex gap-1.5"><span class="text-[#f89820] shrink-0">▸</span><span><b>Design Patterns GoF:</b> Singleton (ApplicationConfig), Factory Method, Builder (PetBuilder), Strategy (validações), Observer (eventos de domínio)</span></li>
+              <li class="flex gap-1.5"><span class="text-[#f89820] shrink-0">▸</span><span><b>SOLID completo:</b> SRP no Controller, Open-Closed, Liskov, Interface Segregation, Dependency Inversion revisada nas injeções Spring</span></li>
+              <li class="flex gap-1.5"><span class="text-[#f89820] shrink-0">▸</span><span><b>DDD modelado:</b> Entidades, Value Objects, Aggregate Roots, Repository por Aggregate, Application Service vs Domain Service</span></li>
+              <li class="flex gap-1.5"><span class="text-[#f89820] shrink-0">▸</span><span><b>Spring Data JPA + DDD:</b> @Valid nos payloads, @RestControllerAdvice global, ResponseEntity padronizado, PostgreSQL</span></li>
+              <li class="flex gap-1.5"><span class="text-[#f89820] shrink-0">▸</span><span><b>Testes (JUnit 5 + Mockito):</b> unitários, exceções, controller com MockMvc, integração @SpringBootTest com PostgreSQL real</span></li>
+              <li class="flex gap-1.5"><span class="text-[#f89820] shrink-0">▸</span><span><b>Qualidade:</b> SonarQube local + JaCoCo plugin + Quality Gate ≥80% — corrigir 2+ issues críticos</span></li>
+              <li class="flex gap-1.5"><span class="text-[#f89820] shrink-0">▸</span><span><b>Observabilidade:</b> Spring Actuator + Prometheus + Grafana com dashboard JVM</span></li>
+              <li class="flex gap-1.5"><span class="text-[#f89820] shrink-0">▸</span><span><b>Git Profissional:</b> branches por feature, rebase interativo, squash, cherry-pick, 10 Conventional Commits, README inglês</span></li>
+              <li class="flex gap-1.5"><span class="text-[#f89820] shrink-0">▸</span><span><b>Docker:</b> imagem com non-root user, validada com docker inspect</span></li>
+            </ul>
+            <div class="mt-3 pt-2 border-t border-slate-700/50 text-[10px] text-emerald-400 mono">🎯 Entrega: API com SOLID + DDD + JaCoCo verde + 4 quizzes Rocketseat aprovados</div>
           </div>
 
-          <!-- LRU Cache Engine -->
+          <!-- LRU Cache Engine (S2-S5) -->
           <div class="bg-[#1e293b] border border-cyan-500/40 rounded-lg p-3">
-            <div class="flex items-center gap-2 mb-1">
-              <span class="text-[9px] font-bold text-cyan-400 mono px-1.5 py-0.5 rounded bg-cyan-500/10">S2-S5</span>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-[9px] font-bold text-cyan-400 mono px-1.5 py-0.5 rounded bg-cyan-500/10">S2-S5 · 4 semanas</span>
               <h4 class="text-sm font-bold text-cyan-300">🧠 LRU Cache Engine</h4>
             </div>
-            <div class="text-[10px] mono text-slate-400 mb-2">DoublyLinkedList + HashMap manual · Big O O(1) put/get</div>
-            <p class="text-[11px] text-slate-300 leading-relaxed">Estrutura de dados pura em Java sem java.util. Validado com 10.000 operações. README com análise Big O em inglês — diferencial raro em Jr.</p>
+            <div class="text-[10px] mono text-slate-400 mb-2">Java puro · DSA manual · Big O O(1) · 10k ops validadas</div>
+            <p class="text-[11px] text-slate-300 leading-relaxed mb-3">Estrutura de dados manual — sem java.util — construída em camadas ao longo de 4 semanas. Diferencial raro em Jr para entrevistas de big tech.</p>
+
+            <div class="text-[10px] mono text-cyan-400 font-bold mb-2">📋 Construção em camadas:</div>
+            <ul class="space-y-1.5 text-[10px] text-slate-300">
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S2 ▸</span><span><b>Node&lt;K,V&gt; + DoublyLinkedList:</b> addToHead() em O(1), removeNode() reajustando ponteiros, removeTail() em O(1) retornando o ejetado</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S2 ▸</span><span><b>JUnit 5:</b> testar lista vazia, remoção do head/tail/meio, validar size em cada operação — zero NPE</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S3 ▸</span><span><b>BST manual:</b> insert() recursivo, search() binário em O(log n), traversals (In-Order/Pre-Order/Post-Order)</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S3 ▸</span><span><b>HashMap manual com Chaining:</b> função hash customizada, array de buckets, put() e get() em O(1) médio</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S4 ▸</span><span><b>LRU Cache (fusão):</b> HashMap + DoublyLinkedList, capacity no construtor, put/get O(1), removeTail quando size > capacity</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S4 ▸</span><span><b>Active Recall total:</b> 4 folhas no caderno (DLL + HashMap + BST + LRU) reproduzidas de cabeça</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S5 ▸</span><span><b>Stress test:</b> 10.000 operações JUnit, validar O(1) real, medir tempo, cache hit vs miss</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S5 ▸</span><span><b>README inglês:</b> análise Big O explicada, repositório independente como showcase</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S7 ▸</span><span><b>Maratona DSA:</b> reproduzir tudo de cabeça + Feynman ("explicar por que O(1)")</span></li>
+            </ul>
+            <div class="mt-3 pt-2 border-t border-slate-700/50 text-[10px] text-emerald-400 mono">🎯 Entrega: LRU Engine validado com 10k ops + Big O em inglês no README</div>
           </div>
 
-          <!-- Nebula-Archive Backend -->
-          <div class="bg-[#1e293b] border border-purple-500/40 rounded-lg p-3">
-            <div class="flex items-center gap-2 mb-1">
-              <span class="text-[9px] font-bold text-purple-400 mono px-1.5 py-0.5 rounded bg-purple-500/10">S2-S7</span>
-              <h4 class="text-sm font-bold text-purple-300">🚀 Nebula-Archive Backend</h4>
+          <!-- SafeWallet Pleno (S2-S7) — substitui o antigo Nebula-Archive Backend -->
+          <div class="bg-gradient-to-br from-cyan-500/5 to-[#1e293b] border-2 border-cyan-500/40 rounded-lg p-3">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-[9px] font-bold text-cyan-400 mono px-1.5 py-0.5 rounded bg-cyan-500/10">S2-S7 · 6 semanas</span>
+              <h4 class="text-sm font-bold text-cyan-300">🔐 SafeWallet Pleno</h4>
+              <span class="text-[8px] mono px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">⭐ ÂNCORA</span>
             </div>
             <div class="text-[10px] mono text-slate-400 mb-2">Spring Cloud · K8s N1+N2 · Helm · CI/CD · Saga · CQRS</div>
-            <p class="text-[11px] text-slate-300 leading-relaxed">Sistema distribuído evoluindo da S2 à S7. Tag final v3.0.0 com microsserviços, gateway JWT, autoscaling, RBAC e padrões de topo (Saga + CQRS).</p>
+            <p class="text-[11px] text-slate-300 leading-relaxed mb-3">Evolução do <b class="text-cyan-300">SafeWallet Core</b> de monolito Spring Boot para um sistema distribuído cloud-native completo. Tag final v3.0.0 vira o portfólio lacrado.</p>
+
+            <div class="text-[10px] mono text-cyan-400 font-bold mb-2">📋 Evolução semana a semana:</div>
+            <ul class="space-y-1.5 text-[10px] text-slate-300">
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S2 ▸</span><span><b>Spring Cloud Config Server:</b> @EnableConfigServer + Git como source of truth + profiles dev/staging/prod + criptografia JKS + @RefreshScope</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S2 ▸</span><span><b>Docker Multi-stage:</b> imagem ≤50MB com -70% redução · Compose com Named Volumes + Healthchecks pg_isready + redes isoladas (backend/database)</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S3 ▸</span><span><b>Eureka Service Discovery:</b> @EnableEurekaServer + microsserviços como Discovery Clients + Heartbeats</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S3 ▸</span><span><b>Spring Cloud Gateway:</b> rotas dinâmicas via Eureka + filtro JWT global (eclusa perimetral) + rate limiting com Redis</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S3 ▸</span><span><b>K8s N1 começa:</b> primeiro Pod via YAML + ReplicaSet + Deployment com 2 réplicas + Service ClusterIP + self-healing testado</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S4 ▸</span><span><b>Comunicação entre serviços:</b> @FeignClient + @LoadBalanced + Circuit Breaker (Resilience4j) com fallback testado</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S4 ▸</span><span><b>K8s N1 completo:</b> RollingUpdate (maxSurge:1, maxUnavailable:0) sem downtime + ConfigMap + Secret (zero hardcode)</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S5 ▸</span><span><b>K8s HPA:</b> autoscale 1→5 réplicas via stress test real, observado em kubectl get hpa -w</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S5 ▸</span><span><b>Probes (Liveness/Readiness/Startup):</b> 3 probes configuradas + Self Healing testado</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S6 ▸</span><span><b>K8s N2 (RBAC):</b> Role + ClusterRole + RoleBinding + ServiceAccount + 3 namespaces (dev/staging/prod) + Network Policy Zero Trust</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S6 ▸</span><span><b>StatefulSet PostgreSQL:</b> volumeClaimTemplates + PVC + persistência testada após delete pod</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S6 ▸</span><span><b>Helm Chart:</b> templates dinâmicos + values-dev/prod + helm install/upgrade funcionando</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S6 ▸</span><span><b>CI/CD GitHub Actions:</b> pipeline completo (build → test → docker push → deploy K8s) end-to-end automático</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S6 ▸</span><span><b>RabbitMQ AMQP:</b> Publisher/Consumer + filas duráveis + Dead Letter Queue (DLQ) + AcknowledgeMode.MANUAL</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S6 ▸</span><span><b>Java 21 Virtual Threads:</b> benchmark vs Thread Pool tradicional + aplicado em background tasks</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S7 ▸</span><span><b>Saga Orquestrado:</b> orquestrador central + compensating transactions automáticas em falha</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S7 ▸</span><span><b>CQRS:</b> Command/Query handlers separados + view desnormalizada sincronizada via eventos RabbitMQ</span></li>
+              <li class="flex gap-1.5"><span class="text-cyan-400 shrink-0">S7 ▸</span><span><b>v3.0.0 lacrado:</b> README final inglês + diagrama Saga + ADRs documentando decisões + tag oficial</span></li>
+            </ul>
+            <div class="mt-3 pt-2 border-t border-cyan-500/30 text-[10px] text-emerald-400 mono">🎯 Entrega: SafeWallet v3.0.0 — sistema distribuído de nível pleno/sênior + 2 certificados Rocketseat</div>
+            <div class="mt-1 text-[9px] mono text-slate-500 italic">📌 Nota: nas atividades semanais o projeto também é referenciado como "Nebula-Archive" — ambos os nomes referem-se ao mesmo sistema sendo evoluído.</div>
           </div>
 
         </div>
