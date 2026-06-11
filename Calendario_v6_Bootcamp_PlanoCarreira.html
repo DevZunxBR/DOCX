@@ -1,21 +1,280 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gabriel Falcão — Bootcamp v6 + Plano de Carreira (Sincronizado)</title>
+  <title>Gabriel Falcão — Bootcamp v6 + Plano de Carreira</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
   <style>
-    body{font-family:'Inter',sans-serif}
-    .mono{font-family:'JetBrains Mono',monospace}
-    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
+    /* ============================================================
+       MONOCROMÁTICO PROFISSIONAL — sistema de temas
+       <html data-theme="dark">  → fundo preto, texto branco
+       <html data-theme="light"> → fundo branco, texto preto
+       Toggle no header (botão sol/lua), persistência em localStorage.
+       ============================================================ */
+
+    :root, :root[data-theme="dark"] {
+      --bg-page:     #0a0a0a;
+      --bg-surface:  #131313;
+      --bg-elevated: #1c1c1c;
+      --bg-input:    #232323;
+      --bg-hover:    #2a2a2a;
+      --bg-overlay:  rgba(0,0,0,0.85);
+
+      --border-soft:    #1f1f1f;
+      --border-mid:     #2e2e2e;
+      --border-strong:  #4a4a4a;
+      --border-accent:  #f5f5f5;
+
+      --text-primary:   #f5f5f5;
+      --text-secondary: #c8c8c8;
+      --text-tertiary:  #989898;
+      --text-muted:     #6e6e6e;
+      --text-faint:     #4d4d4d;
+
+      --accent-bg:        #f5f5f5;
+      --accent-text-on:   #0a0a0a;
+      --accent-soft:      rgba(255,255,255,0.08);
+      --accent-softer:    rgba(255,255,255,0.04);
+
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.6);
+      --shadow-md: 0 4px 14px rgba(0,0,0,0.45);
+      --shadow-lg: 0 14px 40px rgba(0,0,0,0.55);
+
+      --noise-opacity:  0.02;
+      --scrollbar-bg:    #0a0a0a;
+      --scrollbar-thumb: #2e2e2e;
+    }
+
+    :root[data-theme="light"] {
+      --bg-page:     #fafafa;
+      --bg-surface:  #ffffff;
+      --bg-elevated: #f4f4f4;
+      --bg-input:    #ededed;
+      --bg-hover:    #e5e5e5;
+      --bg-overlay:  rgba(255,255,255,0.85);
+
+      --border-soft:    #ebebeb;
+      --border-mid:     #d8d8d8;
+      --border-strong:  #989898;
+      --border-accent:  #0a0a0a;
+
+      --text-primary:   #0a0a0a;
+      --text-secondary: #2a2a2a;
+      --text-tertiary:  #555555;
+      --text-muted:     #7a7a7a;
+      --text-faint:     #a8a8a8;
+
+      --accent-bg:        #0a0a0a;
+      --accent-text-on:   #ffffff;
+      --accent-soft:      rgba(0,0,0,0.05);
+      --accent-softer:    rgba(0,0,0,0.025);
+
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 14px rgba(0,0,0,0.08);
+      --shadow-lg: 0 14px 40px rgba(0,0,0,0.10);
+
+      --noise-opacity:  0.025;
+      --scrollbar-bg:    #ededed;
+      --scrollbar-thumb: #c8c8c8;
+    }
+
+    /* Tipografia base */
+    body{
+      font-family:'Inter',sans-serif;
+      background: var(--bg-page) !important;
+      color: var(--text-primary) !important;
+      transition: background-color 240ms ease, color 240ms ease;
+      font-feature-settings:'cv02','cv03','cv04','cv11','ss01';
+      letter-spacing:-0.005em;
+    }
+    .mono{font-family:'JetBrains Mono',monospace;font-feature-settings:'tnum','zero'}
+
+    /* Transições suaves quando trocar tema */
+    a, button, div, section, header, footer, span, h1, h2, h3, h4, p, label, td, th, table, article, aside {
+      transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease, box-shadow 200ms ease;
+    }
+
+    /* Grão sutil */
+    body::before{
+      content:'';position:fixed;inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      pointer-events:none;z-index:0;
+      opacity:var(--noise-opacity);
+      mix-blend-mode:overlay;
+    }
+
     .no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
-    ::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-track{background:#0f172a}::-webkit-scrollbar-thumb{background:#334155;border-radius:3px}
+    ::-webkit-scrollbar{width:8px;height:8px}
+    ::-webkit-scrollbar-track{background:var(--scrollbar-bg)}
+    ::-webkit-scrollbar-thumb{background:var(--scrollbar-thumb);border-radius:4px}
+    ::-webkit-scrollbar-thumb:hover{background:var(--border-strong)}
+
     html{scroll-behavior:smooth}
-    /* Compensa a altura do header sticky para que as âncoras (#calendario, #strategic) parem com folga */
     #calendario,#strategic{scroll-margin-top:96px}
     @media (min-width:640px){#calendario,#strategic{scroll-margin-top:104px}}
+
+    /* ============================================================
+       OVERRIDES — todas as cores hard-coded mapeadas para o tema
+       ============================================================ */
+
+    /* Backgrounds escuros (slate hex) → tokens do tema */
+    .bg-\[\#0f172a\]{background-color:var(--bg-page) !important}
+    .bg-\[\#1e293b\]{background-color:var(--bg-surface) !important}
+    .bg-\[\#101622\],
+    .bg-\[\#161e2e\],
+    .bg-\[\#171f30\],
+    .bg-\[\#131b29\]{background-color:var(--bg-elevated) !important}
+    .bg-\[\#232f44\]{background-color:var(--bg-hover) !important}
+    .hover\:bg-\[\#232f44\]:hover{background-color:var(--bg-hover) !important}
+    .hover\:bg-\[\#161e2e\]:hover,
+    .hover\:bg-\[\#131b29\]:hover{background-color:var(--bg-elevated) !important}
+    .bg-\[\#1e293b\]\/90{background-color:color-mix(in srgb, var(--bg-surface) 92%, transparent) !important}
+    .bg-\[\#1e293b\]\/40{background-color:var(--bg-elevated) !important}
+    .bg-\[\#0f172a\]\/40,
+    .bg-\[\#0f172a\]\/50,
+    .bg-\[\#0f172a\]\/60{background-color:var(--bg-elevated) !important}
+
+    header{backdrop-filter:blur(14px) saturate(140%)}
+
+    /* Slate text → escala de cinza do tema */
+    .text-slate-100,.text-slate-200,.text-white{color:var(--text-primary) !important}
+    .text-slate-300{color:var(--text-secondary) !important}
+    .text-slate-400{color:var(--text-tertiary) !important}
+    .text-slate-500{color:var(--text-muted) !important}
+    .text-slate-600,.text-slate-800{color:var(--text-faint) !important}
+    .hover\:text-slate-100:hover,
+    .hover\:text-slate-200:hover,
+    .hover\:text-slate-300:hover{color:var(--text-primary) !important}
+
+    /* Slate borders */
+    [class*="border-slate-700"],
+    [class*="border-slate-600"],
+    [class*="border-slate-800"]{border-color:var(--border-mid) !important}
+    .hover\:border-slate-500:hover{border-color:var(--border-strong) !important}
+
+    /* Slate backgrounds (com opacidade) */
+    .bg-slate-700,.bg-slate-700\/50,.bg-slate-800,.bg-slate-800\/20{background-color:var(--bg-input) !important}
+    .hover\:bg-slate-600:hover,.hover\:bg-slate-700:hover{background-color:var(--bg-hover) !important}
+
+    /* === Cores de marca → monocromático === */
+    /* Texto colorido → texto primário (mantém ênfase via peso de fonte) */
+    .text-cyan-300,.text-cyan-400,
+    .text-emerald-300,.text-emerald-400,
+    .text-purple-300,.text-purple-400,
+    .text-rose-300,.text-rose-400,
+    .text-amber-300,.text-amber-400,
+    .text-yellow-300,.text-yellow-400,
+    .text-orange-300,.text-orange-400,
+    .text-blue-400,.text-red-400{color:var(--text-primary) !important}
+
+    .text-\[\#06b6d4\],.text-\[\#10b981\],.text-\[\#a855f7\],.text-\[\#f43f5e\],
+    .text-\[\#f59e0b\],.text-\[\#ef4444\],.text-\[\#f89820\],.text-\[\#2496ed\],
+    .text-\[\#326ce5\]{color:var(--text-primary) !important}
+
+    /* Backgrounds tintados → accent suave */
+    [class*="bg-cyan-500/"],[class*="bg-emerald-500/"],[class*="bg-purple-500/"],
+    [class*="bg-rose-500/"],[class*="bg-amber-500/"],[class*="bg-orange-500/"],
+    [class*="bg-yellow-500/"],[class*="bg-blue-500/"],[class*="bg-red-500/"]{
+      background-color:var(--accent-soft) !important;
+    }
+    [class*="bg-cyan-950/"],[class*="bg-emerald-950/"]{background-color:var(--accent-softer) !important}
+
+    /* Bordas coloridas → border accent (contrasta com bg) */
+    [class*="border-cyan-"],[class*="border-emerald-"],[class*="border-purple-"],
+    [class*="border-rose-"],[class*="border-amber-"],[class*="border-yellow-"],
+    [class*="border-orange-"],[class*="border-blue-"],[class*="border-red-"]{
+      border-color:var(--border-accent) !important;
+    }
+    .border-\[\#06b6d4\],.border-\[\#10b981\],.border-\[\#a855f7\],.border-\[\#f43f5e\],
+    .border-\[\#f59e0b\],.border-\[\#ef4444\],.border-\[\#f89820\],.border-\[\#2496ed\],
+    .border-\[\#326ce5\],.border-\[\#aed6f1\]{border-color:var(--border-accent) !important}
+
+    /* Gradientes → fundo sólido / accent */
+    [class*="bg-gradient-to-r"][class*="from-\[\#1e293b\]"],
+    [class*="bg-gradient-to-b"][class*="from-\[\#10b981\]/5"],
+    [class*="bg-gradient-to-br"][class*="from-cyan-500/"],
+    [class*="bg-gradient-to-r"][class*="from-emerald-500/"],
+    [class*="bg-gradient-to-r"][class*="from-cyan-950/"],
+    [class*="bg-gradient-to-br"][class*="from-\[\#1e293b\]"]{
+      background:var(--bg-surface) !important;
+    }
+
+    /* Logo GF → bloco preto/branco invertido */
+    .bg-gradient-to-br.from-\[\#06b6d4\].to-\[\#10b981\]{
+      background:var(--accent-bg) !important;
+      color:var(--accent-text-on) !important;
+    }
+
+    /* Modal overlay */
+    .bg-black\/70{background-color:var(--bg-overlay) !important}
+
+    /* Sombras refinadas no light mode */
+    :root[data-theme="light"] .rounded-xl,
+    :root[data-theme="light"] .rounded-2xl{box-shadow:var(--shadow-sm)}
+    :root[data-theme="light"] .shadow-2xl{box-shadow:var(--shadow-lg) !important}
+    :root[data-theme="light"] .shadow-lg{box-shadow:var(--shadow-md) !important}
+    :root[data-theme="light"] .shadow-md{box-shadow:var(--shadow-sm) !important}
+
+    /* Botão de semana ativo — preenchido invertido */
+    .bg-\[\#101622\].text-\[\#06b6d4\].border-\[\#06b6d4\],
+    .bg-\[\#101622\].border-\[\#06b6d4\]{
+      background-color:var(--accent-bg) !important;
+      color:var(--accent-text-on) !important;
+      border-color:var(--accent-bg) !important;
+    }
+    /* Botão de dia ativo */
+    .bg-\[\#171f30\]{
+      background-color:var(--accent-bg) !important;
+      color:var(--accent-text-on) !important;
+      border-color:var(--accent-bg) !important;
+    }
+
+    /* Barras de progresso (scorecard) */
+    .bg-cyan-500,.bg-emerald-500,.bg-amber-500,.bg-rose-500{
+      background-color:var(--accent-bg) !important;
+    }
+    .bg-slate-800{background-color:var(--bg-input) !important}
+
+    /* Botão de tema (sol/lua) */
+    .theme-toggle{
+      display:inline-flex;align-items:center;gap:6px;
+      padding:6px 10px;
+      border:1px solid var(--border-mid);
+      border-radius:6px;
+      background:var(--bg-page);
+      color:var(--text-primary);
+      font-family:'JetBrains Mono',monospace;
+      font-size:11px;font-weight:700;
+      letter-spacing:0.06em;text-transform:uppercase;
+      cursor:pointer;
+      transition:all 200ms ease;
+    }
+    .theme-toggle:hover{
+      border-color:var(--border-accent);
+      background:var(--bg-elevated);
+    }
+    .theme-toggle:active{transform:scale(0.97)}
+    :root[data-theme="dark"]  .theme-toggle .icon-sun{display:none}
+    :root[data-theme="dark"]  .theme-toggle .icon-moon{display:inline-block}
+    :root[data-theme="light"] .theme-toggle .icon-sun{display:inline-block}
+    :root[data-theme="light"] .theme-toggle .icon-moon{display:none}
+    :root[data-theme="dark"]  .theme-toggle .label-light{display:inline}
+    :root[data-theme="dark"]  .theme-toggle .label-dark{display:none}
+    :root[data-theme="light"] .theme-toggle .label-light{display:none}
+    :root[data-theme="light"] .theme-toggle .label-dark{display:inline}
+
+    /* Foco acessível */
+    button:focus-visible, a:focus-visible{
+      outline:2px solid var(--border-accent);
+      outline-offset:2px;
+      border-radius:4px;
+    }
+
+    /* Refinamentos finais */
+    h1,h2,h3,h4{letter-spacing:-0.018em}
+    .border-dashed{border-style:dashed !important}
   </style>
 </head>
 <body class="bg-[#0f172a] text-slate-100 min-h-screen relative overflow-x-hidden antialiased select-none">
@@ -29,7 +288,13 @@
         <p class="text-[10px] text-slate-400 mono mt-0.5">7 Semanas · Calendário aula a aula · Plano de Carreira sincronizado · Cloud-Native Java Architect</p>
       </div>
     </div>
-    <div class="flex flex-wrap gap-2 justify-center md:justify-end">
+    <div class="flex flex-wrap gap-2 justify-center md:justify-end items-center">
+      <button id="themeToggle" type="button" class="theme-toggle" aria-label="Alternar tema preto/branco" title="Alternar tema preto ↔ branco">
+        <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <span class="label-light">Branco</span>
+        <span class="label-dark">Preto</span>
+      </button>
       <a href="#calendario" class="bg-[#0f172a] border border-slate-700 hover:border-cyan-500/50 rounded-md px-3 py-1.5 text-center transition-colors"><div class="text-[9px] text-slate-400 font-bold tracking-wider uppercase mono">Bootcamp</div><div class="text-xs font-bold text-cyan-400">📅 7 Semanas</div></a>
       <a href="#strategic" class="bg-[#0f172a] border border-slate-700 hover:border-purple-500/50 rounded-md px-3 py-1.5 text-center transition-colors"><div class="text-[9px] text-slate-400 font-bold tracking-wider uppercase mono">Plano</div><div class="text-xs font-bold text-purple-400">📊 Carreira</div></a>
       <div class="bg-[#0f172a] border border-slate-700 rounded-md px-3 py-1.5 text-center"><div class="text-[9px] text-slate-400 font-bold tracking-wider uppercase mono">R$ 10k em 36m</div><div class="text-xs font-bold text-emerald-400">55–72%</div></div>
@@ -646,6 +911,30 @@
 </div>
 
 <script>
+/* ============================================================
+   THEME TOGGLE — preto ↔ branco com persistência (localStorage)
+   Aplica antes de tudo para evitar flash de tema errado.
+   ============================================================ */
+(function(){
+  try{
+    var saved = localStorage.getItem('gf-theme');
+    var theme = (saved === 'light' || saved === 'dark') ? saved : 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+  }catch(e){}
+})();
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  try{ localStorage.setItem('gf-theme', t); }catch(e){}
+}
+function toggleTheme(){
+  var cur = document.documentElement.getAttribute('data-theme') || 'dark';
+  setTheme(cur === 'dark' ? 'light' : 'dark');
+}
+document.addEventListener('DOMContentLoaded', function(){
+  var btn = document.getElementById('themeToggle');
+  if(btn){ btn.addEventListener('click', toggleTheme); }
+});
+
 const DIAS = {segunda:"Segunda-feira",terca:"Terça-feira",quarta:"Quarta-feira",quinta:"Quinta-feira",sexta:"Sexta-feira",sabado:"Sábado",domingo:"Domingo"};
 const GYM = ["segunda","quarta","sexta"];
 
